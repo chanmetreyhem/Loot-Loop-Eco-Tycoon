@@ -20,13 +20,7 @@ public class LoopDetector : MonoBehaviour
     void Start()
     {
         gridManager = FindFirstObjectByType<GridManager>();
-
         scoreSystem = FindFirstObjectByType<ScoreSystem>();
-
-        // hello 
-
-
-        // dev
 
         // Dynamically instantiate clean visual trails for player inputs
         lineRenderer = gameObject.GetComponent<LineRenderer>();
