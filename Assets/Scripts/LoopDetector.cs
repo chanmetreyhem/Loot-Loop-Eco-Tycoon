@@ -140,28 +140,19 @@ public class LoopDetector : MonoBehaviour
         }
 
         // Validation Rule: Must encompass 3 or more matching elements
-        if (isValidLoop && blocksToRemove.Count >= 3)
+        LevelManager levelManager = FindObjectOfType<LevelManager>();
+        if (levelManager != null)
         {
-            Debug.Log("Valid Match! Exploded " + blocksToRemove.Count + " blocks of type: " + targetedTag);
-
-            // Allocate score profile modifications 
-            if (scoreSystem != null)
-            {
-                scoreSystem.AddLootAndCoins(targetedTag, blocksToRemove.Count);
-            }
-
-            foreach (GameObject block in blocksToRemove)
-            {
-                if (gridManager != null) gridManager.RemoveBlockFromGrid(block);
-                Destroy(block);
-            }
-
-            if (gridManager != null) gridManager.ClearAndRefill();
+            levelManager.ProcessCollectedItems(targetedTag, blocksToRemove.Count);
         }
-        else
+
+        foreach (GameObject block in blocksToRemove)
         {
-            Debug.Log("Invalid Loop! Ensure you circled at least 3 matching items without mixing types.");
+            if (gridManager != null) gridManager.RemoveBlockFromGrid(block);
+            Destroy(block);
         }
+
+        if (gridManager != null) gridManager.ClearAndRefill();
 
         lineRenderer.positionCount = 0;
         points.Clear();
