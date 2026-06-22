@@ -17,15 +17,14 @@ public class LoopDetector : MonoBehaviour
 
     private GridManager gridManager;
     private ScoreSystem scoreSystem; // Reference to track player currency profiles
-
     void Start()
     {
         gridManager = FindFirstObjectByType<GridManager>();
-        scoreSystem = FindObjectOfType<ScoreSystem>();
 
+        scoreSystem = FindFirstObjectByType<ScoreSystem>();
 
         // hello 
-        
+
 
         // dev
 
