@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
-
+[RequireComponent(typeof(LineRenderer))]    
 public class LoopDetector : MonoBehaviour
 {
     private LineRenderer lineRenderer;
@@ -24,7 +24,7 @@ public class LoopDetector : MonoBehaviour
         scoreSystem = FindObjectOfType<ScoreSystem>();
 
         // Dynamically instantiate clean visual trails for player inputs
-        lineRenderer = gameObject.AddComponent<LineRenderer>();
+        lineRenderer = gameObject.GetComponent<LineRenderer>();
         lineRenderer.startWidth = 0.1f;
         lineRenderer.endWidth = 0.1f;
         lineRenderer.positionCount = 0;
