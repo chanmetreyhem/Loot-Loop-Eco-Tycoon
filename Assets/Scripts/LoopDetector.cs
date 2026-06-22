@@ -20,7 +20,7 @@ public class LoopDetector : MonoBehaviour
 
     void Start()
     {
-        gridManager = FindObjectOfType<GridManager>();
+        gridManager = FindFirstObjectByType<GridManager>();
         scoreSystem = FindObjectOfType<ScoreSystem>();
 
 
